@@ -75,9 +75,9 @@ public class UserController {
 			@ApiResponse(code = 404, message = "User Not Found"),
 			@ApiResponse(code = 500, message = "Internal Server Error")
 	})
-	public @ResponseBody ResponseEntity<User> deleteUserById(@PathVariable("id") Long idUser ){
+	public @ResponseBody ResponseEntity<UserOut> deleteUserById(@PathVariable("id") Long idUser ){
 		try {	
-			return new ResponseEntity<User>(userService.deleteUserById(idUser),HttpStatus.OK);
+			return new ResponseEntity<UserOut>(userService.deleteUserById(idUser),HttpStatus.OK);
 		}catch(UserNotFound e) {
 			Logger.error("User Not Found: ",e);
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
