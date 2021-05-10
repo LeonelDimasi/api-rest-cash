@@ -1,5 +1,7 @@
 package com.cash.apirestcash.controller.DTO;
 
+
+
 public class LoanDTO {
 
 	private  Long id;

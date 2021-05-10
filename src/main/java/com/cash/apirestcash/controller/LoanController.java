@@ -1,7 +1,10 @@
 package com.cash.apirestcash.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.cash.apirestcash.controller.DTO.LoanDTO;
-import com.cash.apirestcash.controller.DTO.LoansFilter;
 import com.cash.apirestcash.controller.DTO.Paging;
 import com.cash.apirestcash.persistence.repository.UserRepository;
 import com.cash.apirestcash.service.LoanService;
@@ -39,7 +41,7 @@ public class LoanController {
 		@ApiResponse(code = 200, message = "Ok"),
 		@ApiResponse(code = 500, message = "Internal Server Error")
 	})
-	public @ResponseBody ResponseEntity<LoansFilter> getLoans(
+	public @ResponseBody ResponseEntity<Map<String, Object>> getLoans(
 			@RequestParam( required = true ) int page , 
 			@RequestParam( required = true ) int size , 
 			@RequestParam( required = false ) Long userId 
@@ -57,7 +59,10 @@ public class LoanController {
 			pagingOut.setPage(page); 
 			pagingOut.setSize(size);
 			pagingOut.setTotal(loansOut.size()); 
-			return new ResponseEntity<LoansFilter>(new LoansFilter(loansOut,pagingOut),HttpStatus.OK);
+			Map<String, Object> response = new HashMap<>();
+		    response.put("items",loansOut);
+		    response.put("paging",pagingOut);
+		      return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
 		}catch(Exception e) {
 			LOGGER.error("Internal Server Error: ",e);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
