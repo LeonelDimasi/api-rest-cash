@@ -2,17 +2,17 @@ package com.cash.apirestcash.controller.DTO;
 
 import java.util.List;
 
-public class UserOut {
+public class UserDTO {
 	
 	private Long id;
 	private String email;
 	private String firstName;
 	private String lastName;
-	private List<LoanOut> loans;
+	private List<LoanDTO> loans;
 	
 	
 	
-	public UserOut() {
+	public UserDTO() {
 	}
 	
 	public Long getId() {
@@ -39,11 +39,12 @@ public class UserOut {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public List<LoanOut> getLoans() {
+	public List<LoanDTO> getLoans() {
 		return loans;
 	}
-	public void setLoans(List<LoanOut> list) {
+	public void setLoans(List<LoanDTO> list) {
 		this.loans = list;
 	} 
 
+	
 }

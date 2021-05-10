@@ -4,8 +4,32 @@ import java.util.List;
 
 public class LoansFilter {
 
-	public List<LoanOut> items;
+	private List<LoanDTO> items;
 	
-	public Paging paging;
+	private Paging paging;
+	
+	public LoansFilter() {
+	}
+	
+	public LoansFilter(List<LoanDTO> loans, Paging paging) {
+		this.paging = paging;
+		this.items = loans;
+	}
+
+	public List<LoanDTO> getItems() {
+		return items;
+	}
+
+	public void setItems(List<LoanDTO> items) {
+		this.items = items;
+	}
+
+	public Paging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(Paging paging) {
+		this.paging = paging;
+	}
 
 }

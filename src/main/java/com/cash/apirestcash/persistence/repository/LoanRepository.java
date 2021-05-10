@@ -14,7 +14,4 @@ public interface LoanRepository  extends JpaRepository<Loan,Long>  {
 
 	Page<Loan> findAll(Pageable paging);
 	
-	/*@Transactional
-	Void deleteAllByIdUser(Long idUser);*/
-
 }
